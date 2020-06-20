@@ -1,0 +1,55 @@
+div#detailBody > div.panel {
+    margin-top: 100px;
+}
+
+/*标题部分*/
+div#titlePart {
+    width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/*左边部分*/
+
+img#middleLeft {
+    width: 600px;
+    height: 500px;
+    object-fit: cover;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+/*右边部分*/
+div#middleRight {
+    float: right;
+    margin-right: 30px;
+    margin-top: 100px;
+}
+
+div#middleRight div.panel {
+    width: 400px;
+}
+/*下面部分*/
+div#bottomPart img{
+    display: block;
+    border-radius: 50px;
+    margin: 30px auto;
+}
+div#bottomPart img:hover{
+    cursor:pointer;
+    opacity: 50%;
+}
+div#bottomPart p{
+    display: block;
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 30px;
+    padding-right: 25px;
+}
+div.alert {
+    width: 300px;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 2.3rem;
+}

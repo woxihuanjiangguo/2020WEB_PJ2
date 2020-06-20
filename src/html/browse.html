@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/browse.css">
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-resource.min.js"></script>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../js/functionProvider.js"></script>
+    <title>Browse</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navTop">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <div class="navbar-header">
+                    <a :href="elseGoHome"><img src="../../img/icon/logo.jpg" alt="error" width="40px" height="40px"></a>
+                </div>
+                <li><a :href="elseGoHome">Home</a></li>
+                <li class="active"><a href="">Browse</a></li>
+                <li><a :href="elseGoSearch">Search</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" v-if="isLogged">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
+                            class="glyphicon glyphicon-home"></span> &#160;&#160;My account <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a :href="elseGoUpload"><span class="glyphicon glyphicon-cloud"></span> &#160;Upload</a>
+                        </li>
+                        <li><a :href="elseGoMine"><span class="glyphicon glyphicon-star"></span> &#160;My photo</a></li>
+                        <li><a :href="elseGoFavor"><span class="glyphicon glyphicon-heart"></span> &#160;Favourite</a>
+                        </li>
+                        <li><a href="" @click.prevent="logOut(true)"><span class="glyphicon glyphicon-user"></span>
+                            &#160;Log out</a></li>
+                    </ul>
+                </li>
+                <li class="button" v-if="!isLogged">
+                    <a href="login.html"><span class="glyphicon glyphicon-user"></span> &#160;Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="wholeBrowse">
+    <div class="panelRight">
+        <div class="panel-default panel">
+            <div class="panel-heading">Filter</div>
+            <ul class="list-group">
+                <!--多级筛选栏-->
+                <li class="list-group-item">
+                    <form action="">
+                        <select name="" id="contentFilter" v-model="sContent">
+                            <option :value="content" v-for="content in contents">{{content}}</option>
+                        </select>
+                        <select name="" id="countryFilter" v-model="sCountry" @change="getCity">
+                            <option :value="constant0" selected>Country</option>
+                            <option :value="country['iso']" v-for="country in countries">{{country.countryName}}
+                            </option>
+                        </select>
+                        <select name="" id="cityFilter" v-model="sCity">
+                            <option selected :value="constant0">City</option>
+                            <option :value="city['cid']" v-for="city in cities">{{city.cname}}</option>
+                        </select>
+                        <input type="submit" @click.prevent="getPic(4,sContent.substr(0,1)+'|'+sCountry+'|'+sCity)"
+                               value="Filter">
+                    </form>
+                </li>
+            </ul>
+            <!--图片主体-->
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <img :src="'../../img/travel-images/large/'+item.path" alt="" v-for="item in showPic"
+                         @click.prevent="picJump(item.pid)">
+                    <h1 v-if="ifEmpty">No Picture fits your search!</h1>
+                </div>
+
+
+                <!--分页-->
+                <div id="page" :style="{width:widthx+'px'}">
+                    <ul class="pagination ">
+                        <li @click.prevent="arrow1">
+                            <a href="" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <li :class="ifactive1" @click.prevent="goToPage(1)"><a href="">1</a></li>
+                        <li :class="ifactive2" v-if="ifshow2" @click.prevent="goToPage(2)"><a href="">2</a></li>
+                        <li :class="ifactive3" v-if="ifshow3" @click.prevent="goToPage(3)"><a href="">3</a></li>
+                        <li :class="ifactive4" v-if="ifshow4" @click.prevent="goToPage(4)"><a href="">4</a></li>
+                        <li :class="ifactive5" v-if="ifshow5" @click.prevent="goToPage(5)"><a href="">5</a></li>
+
+                        <li @click.prevent="arrow2">
+                            <a href="" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="panelLeft">
+        <div class="panel-default panel">
+            <!--单字段-->
+            <div class="panel-heading">Search by Title</div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <form action="">
+                            <input type="text" v-model="sTitle">
+                            <input type="submit" @click.prevent="getPic(5,sTitle)" value="Search">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--热门搜索-->
+        <div class="panel-default panel">
+            <div class="panel-heading">Hot Country</div>
+            <ul class="list-group">
+                <li class="list-group-item" @click.prevent="getPic(1,countrySide[0]['iso'])">
+                    {{countrySide[0]['name']}}
+                </li>
+                <li class="list-group-item" @click.prevent="getPic(1,countrySide[1]['iso'])">
+                    {{countrySide[1]['name']}}
+                </li>
+                <li class="list-group-item" @click.prevent="getPic(1,countrySide[2]['iso'])">
+                    {{countrySide[2]['name']}}
+                </li>
+            </ul>
+        </div>
+        <div class="panel-default panel">
+            <div class="panel-heading">Hot City</div>
+            <ul class="list-group">
+                <li class="list-group-item" @click.prevent="getPic(2,citySide[0]['cid'])">{{citySide[0]['name']}}</li>
+                <li class="list-group-item" @click.prevent="getPic(2,citySide[1]['cid'])">{{citySide[1]['name']}}</li>
+                <li class="list-group-item" @click.prevent="getPic(2,citySide[2]['cid'])">{{citySide[2]['name']}}</li>
+            </ul>
+        </div>
+        <div class="panel-default panel">
+            <div class="panel-heading">Hot Content</div>
+            <ul class="list-group">
+                <li class="list-group-item" @click.prevent="getPic(3,'scenery')">Scenery</li>
+                <li class="list-group-item" @click.prevent="getPic(3,'city')">City</li>
+                <li class="list-group-item" @click.prevent="getPic(3,'people')">People</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer id="normalFooter">
+    Copyright ©2020 PROJECT--AgainNoSleep Github--woxihuanjiangguo
+</footer>
+</body>
+</html>
+<script src="../js/general.js"></script>
+<script src="../js/browse.js"></script>

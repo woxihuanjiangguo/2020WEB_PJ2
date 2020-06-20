@@ -1,0 +1,106 @@
+@media screen and (max-width: 1920px) and (min-width: 1240px){
+    body{
+        background: url("../../img/background/loginBackground.png");
+        background-size: cover;
+    }
+}
+@media screen and (max-width: 1239px) and (min-width: 501px){
+    body{
+        background: url("../../img/background/loginBackground2.png");
+        background-size: cover;
+    }
+}
+@media screen and (max-width: 500px) and (min-width: 0px){
+    body{
+        background: url("../../img/background/loginBackground3.png");
+        background-size: 500px 804px;
+        height: 804px;
+    }
+}
+
+
+.login{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 10px 20px rgba(0,0,0,.6);
+    border-radius:10px;
+    width:500px;
+    background: rgba(0,0,0,.8);
+    padding: 50px;
+}
+
+.login h2{
+    text-align: center;
+    color: azure;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.login .inputbox input{
+    width:100%;
+    border:none;
+    border-bottom: azure 2px solid;
+    background: transparent;
+    margin-bottom:60px;
+    font-size: 20px;
+    color: azure;
+    outline: none;
+}
+input[type="submit"]{
+    background:cornflowerblue;
+    width:80px;
+    height:45px;
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    color: azure;
+    margin-right: 40px;
+    font-size: 19px;
+}
+input[type="submit"]:hover{
+    font-size: 21px;
+}
+
+.login a#jump1,.login a#jump2{
+    display: block;
+    float: right;
+    margin-right: 20px;
+    font-size: 18px;
+}
+.login a#jump2{
+    margin-right: 85px;
+}
+.login a#jump3{
+    font-size: 18px;
+}
+
+.login a:link,.login a:visited{
+    text-decoration: none;
+    color: coral;
+}
+.login a:hover,.login a:active{
+    text-decoration: none;
+    color: crimson;
+}
+
+/*错误触发的区域*/
+.visible{
+    display: inherit;
+}
+.invisible{
+    display: none;
+}
+div.alert-danger.alert-warning{
+    text-indent: 1.4rem;
+    font-size: 20px;
+    margin-top:-40px;
+    margin-bottom: 20px;
+}
+footer#normalFooter{
+    position:absolute;
+    bottom: 0;
+    left: 34%;
+}

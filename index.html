@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="src/lib/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/home.css">
+    <script src="src/lib/vue.js"></script>
+    <script src="src/lib/vue-resource.min.js"></script>
+    <script src="src/lib/jquery.min.js"></script>
+    <script src="src/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="src/js/functionProvider.js"></script>
+    <title>Home</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navTop">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <div class="navbar-header" id="homeNavIcon">
+                    <a href=""><img src="img/icon/logo.jpg" alt="error" width="40px" height="40px"></a>
+                </div>
+                <li class="active"><a href="">Home</a></li>
+                <li><a :href="browseHref">Browse</a></li>
+                <li><a :href="searchHref">Search</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" v-if="isLogged">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
+                            class="glyphicon glyphicon-home"></span> &#160;&#160;My account <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a :href="uploadHref"><span class="glyphicon glyphicon-cloud"></span> &#160;Upload</a></li>
+                        <li><a :href="mineHref"><span class="glyphicon glyphicon-star"></span> &#160;My photo</a></li>
+                        <li><a :href="favorHref"><span class="glyphicon glyphicon-heart"></span> &#160;Favourite</a></li>
+                        <li><a href="" @click.prevent="logOut(false)"><span class="glyphicon glyphicon-user"></span> &#160;Log
+                            out</a></li>
+                    </ul>
+                </li>
+                <li class="button" v-if="!isLogged">
+                    <a href="src/html/login.html"><span class="glyphicon glyphicon-user"></span> &#160;Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--头图部分-->
+<div id="homeWhole">
+    <div class="container" id="myCarousel">
+        <div id="carouselBar" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselBar" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselBar" data-slide-to="1"></li>
+                <li data-target="#carouselBar" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img :src="'img/travel-images/large/'+headPic[0].path" alt="" @click.prevent="picJump(headPic[0].id)">
+                    <div class="carousel-caption">{{headPic[0].title}}</div>
+                </div>
+                <div class="item">
+                    <img :src="'img/travel-images/large/'+headPic[1].path" alt="" @click.prevent="picJump(headPic[1].id)">
+                    <div class="carousel-caption">{{headPic[1].title}}</div>
+                </div>
+                <div class="item">
+                    <img :src="'img/travel-images/large/'+headPic[2].path" alt="" @click.prevent="picJump(headPic[2].id)">
+                    <div class="carousel-caption">{{headPic[2].title}}</div>
+                </div>
+            </div>
+            <a href="#carouselBar" class="left carousel-control" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a href="#carouselBar" class="right carousel-control" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+    <!--小图部分-->
+    <div  id="thumbnailPart">
+        <div class="thumbnail" v-for="item in bodyPic">
+            <img :src="'img/travel-images/large/'+item.path" alt="" @click.prevent="picJump(item.id)">
+            <div class="caption">
+                <h3 class="text-center">{{item.title}}</h3>
+                <p class="text-center">{{item.description}}</p>
+            </div>
+        </div>
+    </div>
+    <footer id="homeFooter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h1 class="text-left">Personal Information</h1>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h1 class="text-left">Contact Us</h1>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h1 class="text-left">Something wrong?</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h1 class="text-left"> Github:woxihuanjiangguo</h1>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h1 class="text-left">Twitter</h1>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h1 class="text-left">Report</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h1 class="text-left">FUDAN 19 SS</h1>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h1 class="text-left">QQ or Vx</h1>
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <h1 class="text-left">Give us advice</h1>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--按钮部分-->
+    <div class="button" id="homeJumpButton">
+        <div id="goTopButton" @click="goTop"><img src="img/icon/button1.jpg" alt="error" width="40px" height="40px"></div>
+        <br>
+        <br>
+
+        <div id="refreshButton" @click="refresh"><img src="img/icon/button2.jpg" alt="error" width="40px"
+                                                      height="40px"></div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+<script src="src/js/general.js"></script>
+<script src="src/js/home.js"></script>

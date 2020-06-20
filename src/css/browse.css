@@ -1,0 +1,86 @@
+div#wholeBrowse{
+    width: 1500px;
+    margin: 100px auto;
+    height: 900px;
+}
+div.panelRight{
+    margin-right: 50px;
+    float: right;
+    width: 1000px;
+}
+div.panelLeft{
+    margin-left: 50px;
+    float: left;
+    width: 300px;
+    margin-top: 0px;
+}
+div.panelLeft div.panel{
+    font-size: 1.8rem;
+}
+
+li.list-group-item{
+    background: #d5d5d5;
+}
+div.panelLeft div.panel:nth-child(n+2) li.list-group-item:hover{
+    background: #9d9d9d;
+    cursor: pointer;
+}
+/*图片主体*/
+div.panel-body div.container-fluid img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    display: inline-block;
+    margin-right: 50px;
+    margin-left: 60px;
+    margin-top:20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+div.panel-body div.container-fluid img:hover{
+    opacity: 70%;
+    cursor: pointer;
+}
+/*分页*/
+div#page{
+    margin: 0 auto;
+}
+
+/*表单为多级筛选栏与多字段搜索*/
+form select{
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    margin-right: 50px;
+    background: antiquewhite;
+    opacity: 0.8;
+    outline: none;
+    text-indent: 0.2em;
+    font-size: 2.1rem;
+}
+form select:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
+form input{
+    border-radius: 10px;
+    outline: none;
+}
+form input[type="text"]{
+    color: #0f0f0f;
+    margin-left: -20px;
+    width: 170px;
+    display: inline-block;
+}
+form input:hover{
+    opacity: 80%;
+}
+
+footer#normalFooter{
+    margin-top: 100px;
+}
+
+
+
+
+

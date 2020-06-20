@@ -1,0 +1,99 @@
+#navTop {
+    font-size: 1.8rem;
+}
+#navTop .navbar-header{
+    margin-right: 30px;
+    margin-top: 5px;
+}
+#navTop img{
+    border-radius: 10px;
+}
+ul.dropdown-menu{
+    font-size: 1.9rem;
+    text-align: center;
+}
+footer#normalFooter{
+    color: #9d9d9d;
+    display: block;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/*panel*/
+.panel{
+    font-size: 2.2rem;
+}
+.panel-heading{
+    background: #333333!important;
+    color:azure!important;
+    text-indent: 1rem!important;
+}
+.panel-body{
+    background: antiquewhite!important;
+    font-size: 2rem;
+}
+/*warning*/
+div.alert-warning.alert-danger {
+    opacity: 90%;
+    border-radius: 10px;
+}
+
+
+/*searchPart 大量thumbnail的浏览*/
+div#searchPart .thumbnail{
+    background: antiquewhite;
+    width: 900px;
+    height: 300px;
+    margin-left: 120px;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 20px;
+
+}
+div#searchPart .thumbnail img{
+    cursor: pointer;
+    display: inline-block;
+    width: 400px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+div#searchPart .thumbnail img:hover{
+    opacity: 80%;
+}
+div#searchPart .thumbnail:hover{
+    background: burlywood;
+}
+div#searchPart .thumbnail div#wordPart{
+    float: right;
+    width: 400px;
+}
+div#searchPart div#wordPart h1{
+    margin-bottom: 50px;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+div#searchPart div#wordPart p{
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+div#searchPart div#page{
+    margin:0 auto;
+}
+
+
+
+

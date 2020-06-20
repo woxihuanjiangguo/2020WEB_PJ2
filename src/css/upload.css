@@ -1,0 +1,96 @@
+div#uploadWhole,div#modifyWhole{
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+div.panel-body{
+    height: 1030px;
+}
+form select{
+    color: black;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    margin-right: 30px;
+    background: azure;
+    opacity: 0.8;
+    outline: none;
+    text-indent: 0.2em;
+    font-size: 2.1rem;
+}
+form select:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
+div#preview{
+    width: 700px;
+    height: 450px;
+    border:10px dotted burlywood;
+    border-radius: 60px;
+    margin:50px auto;
+}
+div#preview label:first-of-type{
+    background: black;
+    width: 1px;
+    height: 1px;
+}
+div#preview:hover{
+    background: cornsilk;
+}
+div#preview label:last-of-type{
+    text-indent: 8px;
+    display: block;
+    font-size: 3rem;
+    margin: 190px auto;
+    width: 250px;
+    cursor: pointer;
+}
+div#preview label:hover{
+    text-decoration: underline;
+    color: coral;
+}
+div#preview img{
+    transform: translate(-33.5%,-45%);
+    cursor: pointer;
+    margin-left: 5px;
+    width: 670px;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+input[type=file]{
+    display: none;
+}
+input[type=submit]{
+    border-radius: 10px;
+    display: block;
+    width: 100px;
+    margin: 30px auto;
+}
+div.uploadContent{
+    margin-top: 50px;
+}
+div.uploadContent h2{
+    font-size: 2.5rem;
+    display: inline-block;
+}
+div.uploadContent input{
+    font-size: 2.5rem;
+    height: 2em;
+}
+div.uploadContent textarea{
+    font-size: 2.5rem;
+    height: 5em;
+}
+div.alert-danger,div.alert-success{
+    border-radius: 20px;
+    width: 350px;
+    display: inline-block;
+    font-size: 2.5rem;
+}
+div#bad,div#good{
+    margin-left: 360px;
+}
+div#preview div.alert-danger{
+    margin-left: 150px;
+}

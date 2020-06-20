@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-resource.min.js"></script>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../js/functionProvider.js"></script>
+    <title>Login</title>
+</head>
+<body>
+
+<div class="login">
+    <h2>Login</h2> <br>
+
+    <form action="" method="post" id="loginForm">
+        <div class="inputbox">
+            <input type="text" name="username" placeholder="Your username"  v-model="loginUser"> <br>
+            <div class="alert-warning alert-danger" :class="loginMistake1">User doesn't exist!</div>
+            <input type="password" name="password" placeholder="Your password" v-model="loginPass"> <br>
+            <div class="alert-warning alert-danger" :class="loginMistake2">Wrong password!</div>
+        </div>
+        <input type="submit" value="Login" @click.prevent="loginSubmit">
+        <a href="register.html" id="jump1">Don't have an account?Register</a>
+        <a href="../../index.html" id="jump2">Return to Home</a>
+    </form>
+</div>
+
+
+
+<footer id="normalFooter">
+    Copyright ©2020 PROJECT--AgainNoSleep Github--woxihuanjiangguo
+</footer>
+
+</body>
+</html>
+<script src="../js/login.js"></script>

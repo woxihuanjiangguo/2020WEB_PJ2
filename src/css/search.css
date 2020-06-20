@@ -1,0 +1,11 @@
+div#searchWhole{
+    width: 1200px;
+    margin: 100px auto;
+}
+div#searchPart button{
+    font-size: 2rem;
+}
+div#searchPart input[type=text]{
+    height: 2.1em;
+    font-size: 2rem;
+}

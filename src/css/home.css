@@ -1,0 +1,107 @@
+/*页脚部分*/
+footer#homeFooter{
+    background: #333333;
+    height: 270px;
+    margin-top: 200px;
+
+}
+footer#homeFooter .row{
+    margin-top: 20px;
+}
+footer#homeFooter h1:hover{
+    text-decoration: underline;
+    color: aquamarine;
+    cursor: pointer;
+}
+footer .row:first-child h1{
+    color: azure;
+    font-family: "Microsoft YaHei UI",sans-serif;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+footer .row:nth-child(n+2) h1{
+    color: azure;
+    font-family: "Microsoft YaHei UI",sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+/*按钮部分*/
+#homeJumpButton.button{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+#homeJumpButton.button img{
+    border-radius: 20px;
+}
+#homeJumpButton.button div:hover{
+    cursor: pointer;
+    opacity: 70%;
+}
+#homeJumpButton.button div:hover{
+    opacity: 70%;
+}
+
+/*图片部分 轮播图+小图*/
+
+#myCarousel{
+    margin-top: 120px;
+    width: 1100px;
+}
+#myCarousel div.carousel-inner div.item img{
+    height: 700px;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+/*小图*/
+div#thumbnailPart{
+    width: 1100px;
+    margin: 30px auto;
+    height: 1100px;
+}
+div.thumbnail{
+    float: left;
+    display: inline-block;
+    height: 345px;
+    padding-top: 10px;
+    margin-left: 70px;
+    margin-top: 30px;
+    width: 275px;
+    outline: none;
+    border:none;
+    background: silver;
+    border-radius: 20px;
+}
+
+.thumbnail:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+div.caption{
+    height: 100px!important;
+}
+.thumbnail .caption h3{
+    margin-top: 1px;
+    font-size: 2rem;
+}
+.thumbnail .caption p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}
+.thumbnail img{
+    border-radius: 10px;
+    display: block;
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+}
+@media screen and (max-width: 1280px){
+    footer#homeFooter .row div:first-child{
+        margin-left:150px;
+        margin-right: 70px;
+    }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/upload.css">
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-resource.min.js"></script>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../js/functionProvider.js"></script>
+    <title>Upload</title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navTop">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <div class="navbar-header">
+                    <a :href="elseGoHome"><img src="../../img/icon/logo.jpg" alt="error" width="40px" height="40px"></a>
+                </div>
+                <li><a :href="elseGoHome">Home</a></li>
+                <li><a :href="elseGoBrowse">Browse</a></li>
+                <li><a :href="elseGoSearch">Search</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" v-if="isLogged">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
+                            class="glyphicon glyphicon-home"></span> &#160;&#160;My account <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href=""><span class="glyphicon glyphicon-cloud"></span> &#160;Upload</a></li>
+                        <li><a :href="elseGoMine"><span class="glyphicon glyphicon-star"></span> &#160;My photo</a></li>
+                        <li><a :href="elseGoFavor"><span class="glyphicon glyphicon-heart"></span> &#160;Favourite</a>
+                        </li>
+                        <li><a href="" @click.prevent="logOut(true)"><span class="glyphicon glyphicon-user"></span>
+                            &#160;Log out</a></li>
+                    </ul>
+                </li>
+                <li class="button" v-if="!isLogged">
+                    <a href="login.html"><span class="glyphicon glyphicon-user"></span> &#160;Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="uploadWhole">
+    <form action="">
+        <div class="panel panel-default">
+            <div class="panel-heading">Upload</div>
+            <div class="list-group-item">Choose the content,country and city first.</div>
+            <div class="list-group-item">
+
+                <select name="" id="contentFilter" v-model="sContent">
+                    <option :value="content" v-for="content in contents">{{content}}</option>
+                </select>
+                <select name="" id="countryFilter" v-model="sCountry" @change="getCity">
+                    <option :value="constant0" selected>Country</option>
+                    <option :value="country['iso']" v-for="country in countries">{{country.countryName}}
+                    </option>
+                </select>
+                <select name="" id="cityFilter" v-model="sCity">
+                    <option selected :value="constant0">City</option>
+                    <option :value="city['cid']" v-for="city in cities">{{city.cname}}</option>
+                </select>
+                <div class="alert-danger text-center" v-if="warn1">Choose its city and country!</div>
+
+            </div>
+            <div class="panel-body">
+                <div id="preview">
+                    <label for="uploadFile">
+                        <img :src="previewPic" alt="" >
+                    </label>
+                    <label for="uploadFile" v-if="ifShowClickButton">Click to upload</label>
+                    <div class="alert-danger text-center" v-if="warn2">Please choose the picture!</div>
+
+                </div>
+                <input type="file" accept="image/*" @change="getFile($event)" id="uploadFile" ref="img">
+                <div class="uploadContent">
+                    <h2>Title:</h2>
+                    <div class="alert-danger text-center" v-if="warn3">Please give the picture a title!</div>
+                    <input type="text" class="form-control" v-model="sTitle">
+                </div>
+                <div class="uploadContent">
+                    <h2>Description:</h2>
+                    <div class="alert-danger text-center" v-if="warn4">Please fill in some description</div>
+                    <textarea name="" id="" cols="30" rows="10" class="form-control" v-model="sDescription"></textarea>
+                </div>
+
+                <input type="submit" class="alert-info" value="Upload" @click.prevent="submitForm" >
+                <div class="alert-danger text-center" v-if="bad" id="bad">Submit Failure,try again!</div>
+                <div class="alert-success  text-center" v-if="good" id="good">Success!</div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer id="normalFooter">
+    Copyright ©2020 PROJECT--AgainNoSleep Github--woxihuanjiangguo
+</footer>
+</body>
+</html>
+<script src="../js/general.js"></script>
+<script src="../js/upload.js"></script>
