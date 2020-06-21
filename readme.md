@@ -2,7 +2,8 @@
 ## 个人信息
 姓名：李臻欣  
 学号：19302010007  
-github地址：https://github.com/woxihuanjiangguo/2020WEB_PJ2
+github地址：https://github.com/woxihuanjiangguo/2020WEB_PJ2  
+网站入口:index.html
 ## 基本内容完成情况
 所有功能都实现了！！  
   
@@ -13,7 +14,19 @@ github地址：https://github.com/woxihuanjiangguo/2020WEB_PJ2
 2、浏览页中的热门内容：对于图片类型content，取了三个固定的内容；对于热门国家与热门城市，从数据库中读取了现有图片数目最多的三个国家与三个城市，作为热门内容。  
 3、注册的逻辑：用户名只能是字母、数字，介于3-20位之间，密码为6-18位的字母与数字，并且应该同时包含字母与数字，否则位弱密码，不能通过。  
 4、上传界面：用户能够在已经选择图片的情况下，通过再次点击图片来更改所要上传的图片。并且在国家、城市的二级联动中，对于部分没有城市的国家，比如Netherlands Antilles,用户只需要选择国家即可；对于有城市的国家，用户需要同时选择国家和城市，否则不能通过。
-用户必须填写标题与具体描述，否则视为不合法的图片内容。
+用户必须填写标题与具体描述，否则视为不合法的图片内容。  
+  
+以下为一些网站截图  
+![](screenshot/g1.png)
+![](screenshot/g2.png)
+![](screenshot/g3.png)
+![](screenshot/g4.png)
+![](screenshot/g5.png)
+![](screenshot/g6.png)
+![](screenshot/g7.png)
+![](screenshot/g8.png)
+![](screenshot/g9.png)
+
 
 ## bonus完成情况
 ### bonus1
